@@ -3,6 +3,10 @@
   "displayName": "ZkC",
   "description": "ZkC language support",
   "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Consensys/zkc-vscode-extension.git"
+  },
   "engines": {
     "vscode": "^1.75.0"
   },
@@ -21,7 +25,10 @@
   "scripts": {
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
-    "vscode:prepublish": "npm run compile"
+    "bundle": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node --minify",
+    "bundle:dev": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node --sourcemap",
+    "package": "vsce package",
+    "vscode:prepublish": "npm run bundle"
   },
   "dependencies": {
     "vscode-languageclient": "^9.0.1"
@@ -29,6 +36,8 @@
   "devDependencies": {
     "@types/node": "^18.0.0",
     "@types/vscode": "^1.75.0",
+    "@vscode/vsce": "^3.0.0",
+    "esbuild": "^0.25.0",
     "typescript": "^5.0.0"
   }
 }
