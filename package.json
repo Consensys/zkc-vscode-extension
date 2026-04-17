@@ -11,7 +11,7 @@
     "vscode": "^1.75.0"
   },
   "categories": ["Programming Languages"],
-  "activationEvents": [],
+  "activationEvents": ["onLanguage:zkc"],
   "main": "./out/extension.js",
   "contributes": {
     "languages": [
