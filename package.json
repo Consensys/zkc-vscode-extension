@@ -20,6 +20,13 @@
         "aliases": ["ZkC", "zkc"],
         "extensions": [".zkc"]
       }
+    ],
+    "commands": [
+      {
+        "command": "zkc.restartServer",
+        "title": "Restart Server",
+        "category": "ZkC"
+      }
     ]
   },
   "scripts": {
