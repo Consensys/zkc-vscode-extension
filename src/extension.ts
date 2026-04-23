@@ -20,7 +20,7 @@ import {
 
 let client: LanguageClient;
 
-export function activate(_context: vscode.ExtensionContext) {
+export function activate(context: vscode.ExtensionContext) {
   const serverOptions: ServerOptions = {
     command: "zkc",
     args: ["lsp"],
@@ -37,6 +37,13 @@ export function activate(_context: vscode.ExtensionContext) {
     //  }
   });
   client.start();
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand("zkc.restartServer", async () => {
+      await client.stop();
+      client.start();
+    })
+  );
 }
 
 export function deactivate(): Thenable<void> | undefined {
