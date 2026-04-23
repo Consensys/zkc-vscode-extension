@@ -31,11 +31,15 @@ export function activate(context: vscode.ExtensionContext) {
   };
 
   client = new LanguageClient("zkc", "ZkC", serverOptions, clientOptions);
+  // log client starting.
   client.onDidChangeState((event) => {
-    client.info("Language server started.");
+    if (event.newState === State.Running) {
+      client.info("Language server started.");
+    }
   });
+  // start client
   client.start();
-
+  // register restart command
   context.subscriptions.push(
     vscode.commands.registerCommand("zkc.restartServer", async () => {
       await client.restart();
