@@ -23,7 +23,7 @@ let client: LanguageClient;
 export function activate(context: vscode.ExtensionContext) {
   const serverOptions: ServerOptions = {
     command: "zkc",
-    args: ["lsp"],
+    args: ["lsp", "-v"],
   };
 
   const clientOptions: LanguageClientOptions = {
